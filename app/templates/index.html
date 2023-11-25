@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Classification</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+  </head>
+  <body>
+    <header><h1>Cat or Dog?</h1></header>
+    <main>
+      <form action="/classify" method="post" enctype="multipart/form-data">
+        <input type="radio" id="model50" name="model" value="50" />
+        <label for="model50">Model 50x50</label><br />
+
+        <input type="radio" id="model100" name="model" value="100" />
+        <label for="model100">Model 100x100</label><br />
+
+        <input type="radio" id="model150" name="model" value="150" />
+        <label for="model150">Model 150x150</label><br />
+
+        <input type="radio" id="vgg16" name="model" value="16" />
+        <label for="vgg16">VGG16 (recommended)</label><br />
+        
+        <input type="file" id="imageInput" name="image"/>
+
+        <button type="submit">Classify</button>
+
+        
+      </form>
+      <img
+        id="uploadedImage"
+        src="{{ image_url }}"
+        alt="Uploaded Image"
+        style="max-width: 300px"
+        >
+
+      <br /><br />
+      
+      <p id="classificationResult">{{ text_result }}</p>
+    </main>
+    
+      
+  </body>
+</html>
